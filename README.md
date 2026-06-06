@@ -9,72 +9,47 @@
 
 ## BRK230: Build Smarter AI Systems in Foundry as Models and Costs Evolve
 
-## Session Description
-
 Discover how to quickly choose, integrate, and validate AI models inside Microsoft Foundry. Learn techniques for navigating thousands of model options, benchmarking performance, and streamlining your workflow with deep IDE support. Build faster, ship smarter, and stay on top of the evolving AI landscape.
 
----
+| _Click the banner to visit the session page & watch replay_ |
+|:---:|
+| [![Thumbnail](./img/brk230-thumbnail.jpg)](https://build.microsoft.com/en-US/sessions/brk230) |
+
+<br/>
 
 ## Introduction
 
-Model lifecycles are now measured in months, sometimes weeks, and production agents need to deploy and use multiple models to get the right fit for each task.
+Model lifecycles are now measured in months, sometimes weeks, and production agents need to deploy and use multiple models to get the right fit for each task. _"What model should I use?"_ is the wrong question to ask. Instead, the right question is: _"How do I build an AI system that keeps getting smarter, faster, safer, and more cost-efficient as models evolve?"_
 
-_"What model should I use?"_ is the wrong question to ask. Instead, the right question is: _"How do I build an AI system that keeps getting smarter, faster, safer, and more cost-efficient as models evolve?"_
+In this session, walk through the developer's workflow as they tackle that system-design problem from the initial plan to the final deployed product. By the end of the session, you should get a sense for the **model playbook** you can use to apply these levers to your own system development and scenarios.
 
-In this session, walk through the developer's workflow as they tackle that system-design problem from the initial plan to the final deployed product.
+![Playbook](./img/model-playbook.png)
+
+<br/>
 
 ## Scenario: Compliant Trip Planning
 
 _World Wide Importers_ is a fictitious enterprise company that requires its employees to travel all over the world to conduct business. They have complex travel policies that need to be taken into account when making plans and submitting expenses. So they decided to build a _Travel Concierge_, an AI assistant that can help employees handle travel planning and expenses in a compliant way.
 
-**Scenario:** Carmen is a World Wide Importers employee who travels frequently. This is what her request looks like:
+![Scenario](./img/compliance-scenario.png)
 
-> "I need to fly to Berlin next Monday for a client meeting. Book my flight tickets, find me a hotel near Alexanderplatz, and make sure you stay within my company's travel policy. Also, check if you can expense my parking tickets — I have attached my parking receipts."
+This demo walks through that system-design problem end-to-end using **Microsoft Foundry**. We follow the travel request from an employee — decomposing it into the jobs a production agent actually has to do: routing intent, reading a receipt image, answering a policy question, planning the trip, and calling tools. For each job, we show how to pick, evaluate, route, fine-tune, and operate the right model.
 
-This demo walks through that system-design problem end-to-end using **Microsoft Foundry**. We follow Carmen's request — decomposing it into the jobs a production agent actually has to do: routing intent, reading a receipt image, answering a policy question, planning the trip, and calling tools. For each job, we show how to pick, evaluate, route, fine-tune, and operate the right model.
+<br/>
 
 ## Developer Challenges
 
 The session is organized around four challenges every AI developer faces:
 
-1. **Select**: *"Which model fits my task?"* Browse over 11,000 models in the Foundry catalog (Azure OpenAI, Claude, MAI, DeepSeek, Mistral, Grok, Llama, Cohere, Fireworks AI, and more) and shortlist candidates.
-2. **Evaluate**: *"Is the model getting better?"* Define quality, latency, and cost criteria, then compare models side by side on your own data with built-in and custom evaluators.
-3. **Optimize**: *"How do I reduce cost?"* Apply model routing, prompt caching, batch inference, provisioned throughput, structured outputs, and distillation or fine-tuning to cut cost without losing quality.
-4. **Operate**: *"Will it hold up in production?"* Deploy with managed endpoints, versioning, rollback, monitoring, responsible AI guardrails, and governance.
+| | | |
+|:---|:---|:---|
+| **Select** | _Which model fits my task?_ | Browse over 11,000 models in the Foundry catalog (Azure OpenAI, Claude, MAI, DeepSeek, Mistral, Grok, Llama, Cohere, Fireworks AI, and more) and shortlist candidates|
+| **Evaluate**| *Is the model getting better?*|Define quality, latency, and cost criteria, then compare models side by side on your own data with built-in and custom evaluators. |
+| **Optimize**| *How do I reduce cost?*|Apply model routing, prompt caching, batch inference, provisioned throughput, structured outputs, and distillation or fine-tuning to cut cost without losing quality.|
+| **Operate**| *Will it hold up in production?*| Deploy with managed endpoints, versioning, rollback, monitoring, responsible AI guardrails, and governance.|
+| | |
 
-Watch as we iteratively reduce the cost and latency, while improving the quality of responses, using a series of Microsoft Foundry tools and capabilities.
-
-The end result in the demo: **74% lower cost, 12% lower latency, and 10% higher quality** compared to a naive "one frontier model for everything" baseline. After distillation, the policy slice drops further to roughly one-third the cost at half the latency.
-
-## Try It Yourself: Hands-on Workshop
-
-The demo was built using a [hands-on workshop](https://github.com/microsoft-foundry/model-releases) that you can step through to build your own intuition for this hill-climbing journey. The repository is instrumented with both workshop _skills_ and a _replay agent_ to help you explore ideas with an AI coding agent.
-
-### 1. Getting Started
-
-1. Fork [the model-releases repo](https://github.com/microsoft-foundry/model-releases) to your own GitHub profile.
-1. Launch GitHub Codespaces on your fork to get a pre-built development environment for a fast start.
-
-### 2. Do The Workshop
-
-Open the GitHub Copilot Chat sidebar and select a good model (we recommend Claude Sonnet 4.6 or Claude Opus 4.7 to start). Then use this prompt to activate Copilot Chat with the workshop:
-
-```
-run the foundry e2e workshop
-```
-
-### 3. Replay Session Demo
-
-We saved all the traces from the run we used to build the breakout demo into a series of data files. Then we wrote an agent that can "replay" the session, so you can see each step with the relevant commands and outcomes. To try this out:
-
-1. Click the "Agent" option in the Copilot Chat window.
-1. Select the "BRK Demo Replay" agent.
-
-Then use this prompt to activate Copilot Chat and have it run the demo for you:
-
-```bash
-run the session demo
-```
+Watch as we iterative refine our system using a series of Microsoft Foundry levers for cost, latency and quality optimization. The end result - a solution that meets our targets for lower cost and latency, and higher quality by applying playbook ideas like _decomposition_ (replace single frontier model with multi-model approach, using smaller and cheaper models that "fit" these tasks), _distillation_ (using frontier model as teacher, to transfer knowledge to a smaller, cheaper "student" without losing quality) and _custom evaluation_ (creating more tailored metrics to capture and correct domain-specific quality gaps).
 
 <br/>
 
@@ -177,6 +152,11 @@ For more info, other clients, and to post questions, visit the [Learn MCP Server
         <img src="https://github.com/naomimoneypenny.png" width="100px;" alt="Naomi Moneypenny"/><br />
         <sub><b>Naomi Moneypenny</b><br/>GPM, Foundry Models</sub></a><br />
             <a href="https://github.com/nmoneypenny" title="talk">📢</a>
+    </td>
+    <td align="center"><a href="https://github.com/shara131981">
+        <img src="https://github.com/shara131981.png" width="100px;" alt="Naomi Moneypenny"/><br />
+        <sub><b>Sharmila Chockalingam</b><br/>Director, AI Marketing</sub></a><br />
+            <a href="https://github.com/shara131981" title="talk">📢</a>
     </td>
 </tr></table>
 
